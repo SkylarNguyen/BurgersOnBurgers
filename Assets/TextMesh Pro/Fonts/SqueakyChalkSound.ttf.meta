@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: ee3a6e28391f87c4a8b1a6f4b1e7547b
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: squeaky chalk sound
+  fontNames:
+  - squeaky chalk sound
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 0531b569a5a80b6429a28da717735433, type: 3}
+  - {fileID: 12800000, guid: c87b08a97e6152048beaaf7082da27ab, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
