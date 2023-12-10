@@ -30,10 +30,6 @@ public class StackableObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        /*foreach(string ingredient in _ingredients)
-        {
-            ingredientsOnPlate[ingredient+"(Clone)"] = 0;
-        }*/
 
         
     }
@@ -67,6 +63,8 @@ public class StackableObject : MonoBehaviour
             {
                 parentStackableObject.UpdateIngredientsOnPlate();
             }
+
+            //Debug.Log("Parent name: " + parentStackableObject.name);
 
             UpdateIngredientsOnPlate();
 
@@ -134,7 +132,7 @@ public class StackableObject : MonoBehaviour
 
             if (!ingredientsOnPlate.ContainsKey(ingredientKey))
             {
-                // If the ingredient doesn't exist on the plate, add it with the initial count
+                // If the ingredient doesn't exist on the plate, add it with the count of 1
                 ingredientsOnPlate.Add(ingredientKey, 1);
             }
             else
@@ -143,23 +141,29 @@ public class StackableObject : MonoBehaviour
                 int existingCount = ingredientsOnPlate[ingredientKey];
                 ingredientsOnPlate[ingredientKey] = existingCount + 1;
             }
+            
 
             // Iterate through parent's ingredients and update the plate's ingredient count
             foreach (var pair in parentStackableObject.ingredientsOnPlate)
             {
                 string key = pair.Key;
                 int value = pair.Value;
+                //Debug.Log("Current key: " + key + ", value: " + value);
 
                 if (key != "Plate" && !ingredientsOnPlate.ContainsKey(key))
                 {
+                    //Debug.Log("Adding new ingredient: " + key + ", value: " + value);
                     ingredientsOnPlate.Add(key, value);
                 }
                 else if (key != "Plate" && ingredientsOnPlate.ContainsKey(key))
                 {
                     int currentCount = ingredientsOnPlate[key];
+                    //Debug.Log("Existing ingredient: " + key + ", current count: " + currentCount);
                     ingredientsOnPlate[key] = currentCount + value;
+                    //Debug.Log("Updated ingredient count: " + key + ", new count: " + ingredientsOnPlate[key]);
                 }
             }
+
         }
         else
         {

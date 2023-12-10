@@ -55,10 +55,9 @@ public class Spawn_Ingredients : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Set _nextIngredient to equal an empty string at start
+ 
         _nextIngredient = "";
 
-        //Set _currentIngredient to equal null at start
         _currentIngredient = null;
 
         //sets the current timer value to equal the drop timer value 9

@@ -156,3 +156,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStack: 0
   onGround: 0
+  _ingredients:
+  - cheese
+  - lettuce
+  - topBun
+  - bottomBun
+  - burntPatty
+  - cookedPatty
+  - rawPatty
+  - onions
+  - tomato
+  - veggiePatty
