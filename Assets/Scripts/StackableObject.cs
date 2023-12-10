@@ -68,11 +68,7 @@ public class StackableObject : MonoBehaviour
                 parentStackableObject.UpdateIngredientsOnPlate();
             }
 
-            // Call UpdateIngredientsOnPlate() only if the ingredient is different from the parent's
-            if (parentStackableObject != null && parentStackableObject.gameObject.name != gameObject.name)
-            {
-                UpdateIngredientsOnPlate();
-            }
+            UpdateIngredientsOnPlate();
 
             Debug.Log(" printing out : " + gameObject.name);
         } 
@@ -91,7 +87,7 @@ public class StackableObject : MonoBehaviour
             {
                 stackableObject.UpdateIngredientsOnPlate();
             }
-            else //(stackableObject != null)
+            else //(stackableObject != null) //notnull and also not on the stack
             {
                 AlignStack(collision.gameObject);
                 onStack = true;
@@ -134,19 +130,18 @@ public class StackableObject : MonoBehaviour
 
         if (parentStackableObject != null)
         {
-            // Check if the ingredient already exists on the plate
-            bool isPresent = ingredientsOnPlate.ContainsKey(gameObject.name);
+            string ingredientKey = gameObject.name;
 
-            if (!isPresent)
+            if (!ingredientsOnPlate.ContainsKey(ingredientKey))
             {
-                // If the ingredient doesn't exist, add it with the initial count
-                ingredientsOnPlate.Add(gameObject.name, 1);
+                // If the ingredient doesn't exist on the plate, add it with the initial count
+                ingredientsOnPlate.Add(ingredientKey, 1);
             }
             else
             {
-                // If the ingredient exists, increment its count only if it's the same as the new one
-                int existingCount = ingredientsOnPlate[gameObject.name];
-                ingredientsOnPlate[gameObject.name] = existingCount + 1;
+                // If the ingredient exists, increment its count
+                int existingCount = ingredientsOnPlate[ingredientKey];
+                ingredientsOnPlate[ingredientKey] = existingCount + 1;
             }
 
             // Iterate through parent's ingredients and update the plate's ingredient count
@@ -159,12 +154,26 @@ public class StackableObject : MonoBehaviour
                 {
                     ingredientsOnPlate.Add(key, value);
                 }
+                else if (key != "Plate" && ingredientsOnPlate.ContainsKey(key))
+                {
+                    int currentCount = ingredientsOnPlate[key];
+                    ingredientsOnPlate[key] = currentCount + value;
+                }
             }
         }
         else
         {
             // If there's no parent, just add the ingredient with the initial count
-            ingredientsOnPlate.Add(gameObject.name, 1);
+            string ingredientKey = gameObject.name;
+            if (!ingredientsOnPlate.ContainsKey(ingredientKey))
+            {
+                ingredientsOnPlate.Add(ingredientKey, 1);
+            }
+            else
+            {
+                int existingCount = ingredientsOnPlate[ingredientKey];
+                ingredientsOnPlate[ingredientKey] = existingCount + 1;
+            }
         }
 
         PrintingredientsOnPlates();
