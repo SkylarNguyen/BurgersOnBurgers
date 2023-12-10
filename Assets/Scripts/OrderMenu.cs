@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class OrderMenu : MonoBehaviour
 {
@@ -262,7 +263,9 @@ public class OrderMenu : MonoBehaviour
 
     private void PrintIngredientCounts()
     {
-        foreach (var pair in ingredientCount)
+        Dictionary<string, int> onlyOnMenu = ingredientCount.Where(pair => pair.Value > 0).ToDictionary(pair => pair.Key, pair => pair.Value);
+        Debug.Log("OrderMenu ingredients listed right now: ");
+        foreach (var pair in onlyOnMenu)
         {
             Debug.Log(pair.Key + ": " + pair.Value);
         }

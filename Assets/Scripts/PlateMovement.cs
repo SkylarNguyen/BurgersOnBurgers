@@ -7,7 +7,6 @@ public class PlateMovement : MonoBehaviour
     public GameObject plate;
     public float movementSpeed = 4.0f;
     
-
     public float leftLimit;
     public float rightLimit;
 
@@ -26,7 +25,6 @@ public class PlateMovement : MonoBehaviour
 
         leftLimit = tablePosition.z - tableWidth / 2.0f;
         rightLimit = tablePosition.z + tableWidth / 2.0f;
-
 
     }
 
@@ -48,37 +46,8 @@ public class PlateMovement : MonoBehaviour
             plate.transform.position = new Vector3(currentPlatePos.x, currentPlatePos.y, currentPlatePos.z - movementSpeed * Time.deltaTime);
         }
 
-
-
     }
 
-    //this is what the plate does when it collides with another gameobject
-    private void OnCollisionEnter(Collision collision)
-    {
-        //the collidedIngredient being the other item, not the plate
-        GameObject collidedIngredient = collision.gameObject;
-        string ingredientName = collidedIngredient.name;
-        
-        if(!hasStack)
-        {
-            PlaceOnPlate(collidedIngredient);
-            stackedIngredients.Push(collidedIngredient); // Push the new ingredient onto the stack
-            Debug.Log("inside collision, stack count: " + stackedIngredients.Count +" " +  collidedIngredient.name);
-            hasStack = true;
-
-            // Update ingredient count
-            if (ingredientsOnPlate.ContainsKey(ingredientName))
-            {
-                ingredientsOnPlate[ingredientName]++;
-            }
-            else
-            {
-                ingredientsOnPlate.Add(ingredientName, 1);
-            }
-        }
-        
-
-    }
 
     public Dictionary<string, int> GetIngredientsOnPlate()
     {
@@ -90,8 +59,7 @@ public class PlateMovement : MonoBehaviour
         return stackedIngredients;
     }
 
-
-
+    /*
     public void PlaceOnPlate(GameObject ingredient)
     {
         Debug.Log("stacked count: " + stackedIngredients.Count);
@@ -149,7 +117,7 @@ public class PlateMovement : MonoBehaviour
                 Debug.Log(ingredientStackObject.name);
             }
         }
-    }
+    }*/
     
 
     

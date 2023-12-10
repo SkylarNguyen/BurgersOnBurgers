@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 1012663558107614324}
   - component: {fileID: -6490712332439068533}
   - component: {fileID: 8963997872908135100}
+  - component: {fileID: 3333747663826668029}
   m_Layer: 0
   m_Name: bottomBun
-  m_TagString: Untagged
+  m_TagString: Ingredient
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -132,7 +133,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 444821908935333121}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e7afea5ba2ac844bb235674513e835e, type: 3}
   m_Name: 
@@ -141,3 +142,17 @@ MonoBehaviour:
     type: 3}
   plateInteraction: {fileID: 919132149155446097, guid: 89c24baafbf5e2b43b5402d0de7ebc46,
     type: 3}
+--- !u!114 &3333747663826668029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444821908935333121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a66f886b38d42f47b917eee25e0aba1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStack: 0
+  onGround: 0

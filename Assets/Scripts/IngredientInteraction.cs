@@ -30,27 +30,9 @@ public class IngredientInteraction : MonoBehaviour
         
     }
     
-    //any visual glitching is probably coming from this code, not from PlateMovement
-    void OnTriggerEnter(Collider other)
-    {
-        GameObject collidedIngredient = other.gameObject;
-       
-
-        if (collidedIngredient == kitchenTable)
-        {
-            // Handle collision with the table
-        }
-        else if (collidedIngredient == plateInteraction)
-        {
-            // Handle collision with the plate
-        }
-        else if (plateMovementScript.stackedIngredients.Count > 0)
-        {
-            RebuildingStackWith(collidedIngredient);
-            Debug.Log("ingredient script stack count: " + plateMovementScript.stackedIngredients.Count);
-        }
-    }
-
+    //I HAVE TO GET RID OF ALL THE WORK TO HOPEFULLY FIX THIS PROBLEM IN AN ENTIRELY DIFFERENT WAY
+    //keeping this code around just in case.
+    /*
     //For some reason when you add the falling ingredient on top it causes a lot of physics bugs
     //figured it would be easier to just remake the stack entirely
     void RebuildingStackWith(GameObject collidedIngredient)
@@ -88,7 +70,6 @@ public class IngredientInteraction : MonoBehaviour
             //stackedIngredients.Push(collidedIngredient);
             // Place the ingredient on the plate
             stackedIngredients.Clear();
-            
 
             Dictionary<string, int> ingredientsOnPlate = plateMovementScript.GetIngredientsOnPlate();
             string scriptObjectName = this.gameObject.name;
@@ -102,14 +83,12 @@ public class IngredientInteraction : MonoBehaviour
                 ingredientsOnPlate.Add(scriptObjectName, 1);
             }
 
-            
-       
             foreach (GameObject ingredient in reorderedIngredients)
             {
                 stackedIngredients.Push(ingredient);
             }
         }
-    }
+    }*/
 
 
 }
