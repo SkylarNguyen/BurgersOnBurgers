@@ -45,6 +45,11 @@ public class PlateMovement : MonoBehaviour
             plate.transform.position = new Vector3(currentPlatePos.x, currentPlatePos.y, currentPlatePos.z - movementSpeed * Time.deltaTime);
         }
 
+        if(Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
     }
 
 
